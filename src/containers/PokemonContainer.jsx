@@ -1,5 +1,6 @@
 import React from 'react';
 import PokemonSelect from '../components/PokemonSelect';
+import Pokemon from '../components/Pokemon';
 
 class PokemonContainer extends React.Component {
     
@@ -21,7 +22,9 @@ class PokemonContainer extends React.Component {
   
   handlePokemonSelected(index) {
     const selectedPokemon = this.state.pokemons[index];
-    this.setState({currentPokemon: selectedPokemon})
+    fetch(selectedPokemon.url)
+    .then(response => response.json())
+    .then(data => this.setState({currentPokemon: data}))
   }
 
   render () {
@@ -29,6 +32,7 @@ class PokemonContainer extends React.Component {
       <div>
         <h1>Container</h1>
         <PokemonSelect onPokemonSelected={this.handlePokemonSelected} pokemons={this.state.pokemons}/>
+        <Pokemon pokemon={this.state.currentPokemon}/>
       </div>
     )
   }
