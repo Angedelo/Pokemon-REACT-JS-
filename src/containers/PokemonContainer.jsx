@@ -9,6 +9,8 @@ class PokemonContainer extends React.Component {
       pokemons: [],
       currentPokemon: null
     };
+
+    this.handlePokemonSelected = this.handlePokemonSelected.bind(this);
   }
 
   componentDidMount() {
@@ -17,12 +19,16 @@ class PokemonContainer extends React.Component {
     .then(data => this.setState({pokemons: data.results}))
   }
   
-  
+  handlePokemonSelected(index) {
+    const selectedPokemon = this.state.pokemons[index];
+    this.setState({currentPokemon: selectedPokemon})
+  }
+
   render () {
     return(
       <div>
         <h1>Container</h1>
-        <PokemonSelect pokemons={this.state.pokemons}/>
+        <PokemonSelect onPokemonSelected={this.handlePokemonSelected} pokemons={this.state.pokemons}/>
       </div>
     )
   }
