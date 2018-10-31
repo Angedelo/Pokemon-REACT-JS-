@@ -3,7 +3,7 @@ import PokemonSelect from '../components/PokemonSelect';
 import Pokemon from '../components/Pokemon';
 
 class PokemonContainer extends React.Component {
-    
+
   constructor (props) {
     super(props);
     this.state = {
@@ -17,9 +17,9 @@ class PokemonContainer extends React.Component {
   componentDidMount() {
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
     .then(response => response.json())
-    .then(data => this.setState({pokemons: data.results}))
+    .then(data => this.setState({pokemons: data.results.slice(0, 151)}))
   }
-  
+
   handlePokemonSelected(index) {
     const selectedPokemon = this.state.pokemons[index];
     fetch(selectedPokemon.url)
@@ -30,7 +30,7 @@ class PokemonContainer extends React.Component {
   render () {
     return(
       <div>
-        <h1>Container</h1>
+        <h1 className="title">Pokemon Library</h1>
         <PokemonSelect onPokemonSelected={this.handlePokemonSelected} pokemons={this.state.pokemons}/>
         <Pokemon pokemon={this.state.currentPokemon}/>
       </div>

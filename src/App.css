@@ -18,6 +18,26 @@
   color: white;
 }
 
+@font-face {font-family: Pokemon; src: url('Pokemon Hollow.ttf');}
+@font-face {font-family: Pokemon2; src: url('Pocket Monk.otf');}
+
+.title{
+  font-family: Pokemon2;
+  color: Yellow;
+  outline: Blue;
+  outline-width: thick;
+  text-shadow: 2px 5px blue;
+  font-size: 10vh;
+}
+
+.pokemon-name{
+  font-family: Pokemon2;
+  color: Yellow;
+  outline: Blue;
+  outline-width: thick;
+  text-shadow: 2px 5px blue;
+}
+
 .App-link {
   color: #61dafb;
 }

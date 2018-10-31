@@ -6,9 +6,12 @@ const Pokemon = (props) => {
 
   return (
     <div>
-      <h1>{capitalize(props.pokemon.forms[0].name)}</h1>
+      <h1 className="pokemon-name">{capitalize(props.pokemon.forms[0].name)}</h1>
       <img src={props.pokemon.sprites.front_default} alt={props.pokemon.forms[0].name} height="200" width="200"/>
       <img src={props.pokemon.sprites.back_default} alt={props.pokemon.forms[0].name} height="200" width="200"/>
+      <ul>
+        <li>Type: {props.pokemon.types[0].type.name}</li>
+      </ul>
     </div>
   )
 }
