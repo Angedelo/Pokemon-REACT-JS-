@@ -1,4 +1,5 @@
 import React from 'react';
+import PokemonSelect from '../components/PokemonSelect';
 
 class PokemonContainer extends React.Component {
     
@@ -13,14 +14,15 @@ class PokemonContainer extends React.Component {
   componentDidMount() {
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
     .then(response => response.json())
-    .then(data => this.setState({pokemons: data}))
+    .then(data => this.setState({pokemons: data.results}))
   }
   
   
   render () {
     return(
       <div>
-        <h1> This is the container</h1>
+        <h1>Container</h1>
+        <PokemonSelect pokemons={this.state.pokemons}/>
       </div>
     )
   }
