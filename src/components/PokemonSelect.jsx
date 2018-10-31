@@ -1,9 +1,10 @@
 import React from 'react';
+import capitalize from '../helpers/capitalize';
 
 const PokemonSelect = (props) => {
     const options = props.pokemons.map((pokemon, index) => {
       return <option key={index} value={index}>
-              {pokemon.name}
+              {capitalize(pokemon.name)}
             </option>
     })
 
